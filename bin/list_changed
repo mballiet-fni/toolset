@@ -1,0 +1,5 @@
+#!/bin/bash
+
+while IFS="" read -r dfile || [ -n "$p" ] ; do
+   echo Loading $dfile
+done <<< $(git diff --name-only HEAD master)

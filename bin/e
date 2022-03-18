@@ -1,0 +1,15 @@
+#!/bin/bash
+
+exploreHere=$1
+
+if [ "$exploreHere" = "" ] ; then
+	exploreHere=.
+fi
+
+exploreHere=`realpath $exploreHere`
+if [ ! -d $exploreHere ] ; then
+	exploreHere=`dirname $exploreHere`
+fi
+
+cd $exploreHere
+explorer .

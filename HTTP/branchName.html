@@ -1,0 +1,604 @@
+<html>
+<head>
+<script>
+	function generateNames(form) {
+		var branch = "";
+		var commit = "";
+		var serverData = {
+			'descriptions' : {
+				'TK01' :{
+					'dev' : {
+						'Baur/STL' : ['tkodev11.fni-stl.com'],
+						'GCP' : ['tkodev51.fnicloud.com'],
+					}
+				},
+				'TKO1 backend' :{
+					'qa' : {
+						'Baur/STL' : ['tkoqa11.fni-stl.com','tkoqa12.fni-stl.com'],
+						'GCP' : ['tkoqa51.fnicloud.com','tkoqa52.fnicloud.com'],
+					},
+					'prod' : {
+						'Baur/STL' : ['tkoprd11.fni-stl.com','tkoprd12.fni-stl.com'],
+						'GCP' : ['tkoprd51.fnicloud.com,','tkoprd52.fnicloud.com'],
+					},
+				},
+				'TKO1 web frontend' :{
+					'qa' : {
+						'Baur/STL' : ['tkowq51.fni-stl.com'],
+						'GCP' : ['tkodev51.fnicloud.com'],
+					},
+					'prod' : {
+						'Baur/STL' : ['tkowp11.fni-stl.com','tkowp12.fni-stl.com'],
+						'GCP' : ['tkowp51.fnicloud.com','tkowp52.fnicloud.com'],
+					},
+				},
+				'TKO1 priv frontend' :{
+					'qa' : {
+						'Baur/STL' : ['tkowq11.fni-stl.com'],
+						'GCP' : ['tkodev51.fnicloud.com'],
+					},
+					'prod' : {
+						'Baur/STL' : ['tkopp11.fni-stl.com','tkopp12.fni-stl.com'],
+						'GCP' : ['tkopp51.fnicloud.com','tkopp52.fnicloud.com'],
+					},
+				},
+				'TK02' :{
+					'dev' : {
+						'Baur/STL' : ['tkodev21.fni-stl.com'],
+						'GCP' : ['tkodev61.fnicloud.com'],
+					},
+				},
+				'TKO2 backend' :{
+					'qa' : {
+						'Baur/STL' : ['tkodev21.fni-stl.com'],
+						'GCP' : ['tkodev61.fnicloud.com'],
+					},
+					'lnch' : {
+						'Baur/STL' : ['tkolnch21.fni-stl.com'],
+						'GCP' : ['tkolnch61.fnicloud.com'],
+					},
+					'prod' : {
+						'Baur/STL' : ['tkoprd21.fni-stl.com','tkoprd22.fni-stl.com'],
+						'GCP' : ['tkoprd61.fnicloud.com','tkoprd62.fnicloud.com'],
+					},
+				},
+				'TKO2 web frontend' :{
+					'qa' : {
+						'Baur/STL' : ['tkopq21.fni-stl.com,','tkopq22.fni-stl.com'],
+						'GCP' : ['tkopq61.fnicloud.com','tkopq62.fnicloud.com'],
+					},
+					'lnch' : {
+						'Baur/STL' : ['tkowl21.fni-stl.com'],
+						'GCP' : ['tkowl61.fnicloud.com'],
+					},
+					'prod' : {
+						'Baur/STL' : ['tkowp21.fni-stl.com','tkowp22.fni-stl.com'],
+						'GCP' : ['tkowp61.fnicloud.com','tkowp62.fnicloud.com'],
+					},
+				},
+				'TKO2 priv frontend' :{
+					'qa' : {
+						'Baur/STL' : ['tkopq21.fni-stl.com','tkopq22.fni-stl.com'],
+						'GCP' : ['tkopq61.fnicloud.com','tkopq62.fnicloud.com'],
+					},
+					'lnch' : {
+						'Baur/STL' : ['tkopl21.fni-stl.com	'],
+						'GCP' : ['tkopl61.fnicloud.co'],
+					},
+					'prod' : {
+						'Baur/STL' : ['tkopp21.fni-stl.com','tkopp22.fni-stl.com'],
+						'GCP' : ['tkopp61.fnicloud.com','tkopp62.fnicloud.com'],
+					},
+				},
+				'TK03' :{
+					'dev' : {
+						'Baur/STL' : ['tkodev11.fni-stl.com'],
+						'GCP' : ['tkodev71.fnicloud.com'],
+					},
+				},
+				'TKO3 backend' :{
+					'qa' : {
+						'Baur/STL' : ['tkoqa31.fni-stl.com','tkoqa32.fni-stl.com'],
+						'GCP' : ['tkoqa71.fnicloud.com','tkoqa72.fnicloud.com'],
+					},
+					'lnch' : {
+						'Baur/STL' : ['tkolnch31.fni-stl.com'],
+						'GCP' : ['tkolnch71.fnicloud.co'],
+					},
+					'prod' : {
+						'Baur/STL' : ['tkoprd31.fni-stl.com','tkoprd32.fni-stl.com'],
+						'GCP' : ['tkoprd71.fnicloud.com','tkoprd72.fnicloud.com'],
+					},
+				},
+				'TKO3 web frontend' :{
+					'qa' : {
+						'Baur/STL' : ['tkowq31.fni-stl.com','tkowq32.fni-stl.com'],
+						'GCP' : ['tkowq71.fnicloud.com','tkowq72.fnicloud.com'],
+					},
+					'lnch' : {
+						'Baur/STL' : ['tkowl31.fni-stl.com'],
+						'GCP' : ['tkowl71.fnicloud.com'],
+					},
+					'prod' : {
+						'Baur/STL' : ['tkowp31.fni-stl.com','tkowp32.fni-stl.com'],
+						'GCP' : ['tkowp71.fnicloud.com','tkowp72.fnicloud.com'],
+					},
+				},
+				'TKO3 priv frontend' :{
+					'qa' : {
+						'Baur/STL' : ['tkopq31.fni-stl.com','tkopq32.fni-stl.com'],
+						'GCP' : ['tkopq31.fnicloud.com','tkopq32.fnicloud.com'],
+					},
+					'lnch' : {
+						'Baur/STL' : ['tkopl31.fni-stl.com'],
+						'GCP' : ['tkopl31.fnicloud.com'],
+					},
+					'prod' : {
+						'Baur/STL' : ['tkopp31.fni-stl.com','tkopp32.fni-stl.com'],
+						'GCP' : ['tkopp31.fnicloud.com','tkopp32.fnicloud.com'],
+					},
+				},
+				'SLM' : {
+					'dev' : {
+						'Baur/STL' : ['slmdev11.fni-stl.com'],
+						'GCP' : ['slmdev51.fnicloud.com'],
+					},
+					'qa' : {
+						'Baur/STL' : ['slmqa11.fni-stl.com','slmqa12.fni-stl.com'],
+						'GCP' : ['slmqa51.fnicloud.com','slmqa52.fnicloud.com'],
+					},
+					'prod' : {
+						'Baur/STL' : ['slmprd11.fni-stl.com','slmprd13.fni-stl.com'],
+						'GCP' : ['slmprd51.fnicloud.com','slmprd52.fnicloud.com'],
+					},
+				},
+				'third party services' : {
+					'dev' : {
+						'description' : 'third party services',
+						'Baur/STL' : ['svcdev11.fni-stl.com'],
+						'GCP' : ['svcdev51.fnicloud.com'],
+					},
+					'prod' : {
+						'Baur/STL' : ['svcprd11.fni-stl.com','svcprd12.fni-stl.com'],
+						'GCP' : ['svcprd51.fnicloud.com','svcprd52.fnicloud.com'],
+					},
+				},
+			},
+			'customers' : {
+				'csb' : { 
+					'servers' : {
+						'dev' : ['TK01'], 
+						'qa' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
+						'prod' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'phc' : { 
+					'servers' : {
+						'dev' : ['TK01'], 
+						'qa' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
+						'prod' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'tci' : { 
+					'servers' : {
+						'dev' : ['TK01'], 
+						'qa' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
+						'prod' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'twc' : { 
+					'inactive' : true,
+					'servers' : {
+						'dev' : ['TK01'], 
+						'qa' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
+						'prod' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'nav' : { 
+					'servers' : {
+						'dev' : ['TK02'],
+						'qa' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],
+						'lnch' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],					
+						'prod' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],	
+					},
+					'web' : {
+						'dev' : 'https://devnav.fni-stl.com/cgi-bin/lender_fni_login.pl',
+					},
+				},
+				'sfn' : { 
+					'servers' : {
+						'dev' : ['TK02'],
+						'qa' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'] ,
+						'lnch' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],
+						'prod' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],	
+					},
+					'web' : {
+						'dev' : 'https://devsfn.fni-stl.com/cgi-bin/lender_fni_login.pl',
+						'prod?' : 'https://sfn.fni-stl.com/cgi-bin/lender_fni_login.pl',
+					},
+				},
+				'tif' : { 
+					'servers' : {
+						'dev' : ['TK02'],
+						'qa' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'] ,
+						'lnch' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],
+						'prod' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],					
+					},
+					'web' : {
+					},
+				},
+				'tk2' : { 
+					'servers' : {
+						'dev' : ['TK02'],
+						'qa' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'] ,
+						'lnch' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],
+						'prod' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],					
+					},
+					'web' : {
+					},
+				},
+				'wfi' : { 
+					'inactive' : true,
+					'servers' : {
+						'dev' : ['TK02'],
+						'qa' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'] ,
+						'lnch' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],
+						'prod' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],	
+					},
+					'web' : {
+					},
+				},
+				'cln' : { 
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'cts' : { 
+					'inactive' : true,
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+				},
+				'gaf' : { 
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+						'dev' : 'https://devgaf.fni-stl.com/fni-lenderportal-navigation/login',
+					},
+				},
+				'koa' : { 
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'ols' : { 
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'], 
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'rfc' : {  
+					'servers' : {
+						'inactive' : true,
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'swl' : { 
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'tow' : { 
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'umb' : { 
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'slm' : { 
+					'servers' : {
+						'dev' : ['SLM'],
+						'qa' : ['SLM'],
+						'prod' : ['SLM'],
+					},
+					'web' : {
+					},
+				},
+				'third party services' : {
+					'servers' : {
+						'dev' : ['third party services'],
+						'qa' : ['third party services'],
+						'lnch' : ['third party services'],
+						'prod' : ['third party services'],
+					},
+					'web' : {
+					},
+				},
+				'lkt' : {
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+						'dev' : 'https://devlkt.fni-stl.com/fni-lenderportal-navigation/login',
+					},
+				},
+				'rea' : {
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'blu' : {
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+					},
+				},
+				'cav' : {
+					'servers' : {
+						'dev' : ['TK02'],
+						'qa' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'] ,
+						'lnch' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],
+						'prod' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],	
+					},
+					'web' : {
+						'tst' : 'https://tstcav.fni-stl.com/fni-lenderportal-navigation/login',
+					}
+				},
+				'omf' : {
+					'servers' : {
+						'dev' : ['TK03'],
+						'qa' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'] ,
+						'lnch' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
+					},
+					'web' : {
+						'dev' : 'https://devomf.fni-stl.com/cgi-bin/lender_fni_login.pl',
+					},
+				},
+			}	
+		};
+		
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+
+		for (const k of urlParams.keys()) {
+			var v = urlParams.get(k);
+			if (! v) { v=''; }
+			document.getElementById(k).value = v;
+		}
+
+		branch+=trim(urlParams.get("type"));
+		branch+=trim(urlParams.get("ticket"));
+		var initials = trim(urlParams.get("initials"));
+		branch+="_"+ initials;
+		branch+="_"+trim(urlParams.get("desc"));
+		
+		branch = branch.replaceAll(/\s/g,"_");
+		branch = branch.replaceAll(/[',\\\/]/g,"");
+
+		commit+=urlParams.get("ticket");
+		commit+=" "+initials;
+
+
+		document.getElementById("branch").value = branch;
+		document.getElementById("commit").value = commit;
+
+		document.getElementById("jira").href = "https://jira.fni-stl.com/browse/"+ urlParams.get("ticket");
+		document.getElementById("jira").text  = urlParams.get("ticket");
+
+		if (urlParams.get("ticket")) {
+			var prefix = urlParams.get("ticket").match(/^([^-]+)/)[0];
+			var prefixConfluence = prefix;
+			
+			//Some of these things are not like the others, fix that!
+			if (prefix == "OMF") { prefixConfluence = "OMFTemp"; }
+			if (prefix == "SWL") { prefixConfluence = "SWLT"; }
+
+			document.getElementById("github").href = "https://github.com/Financial-Network-Incorporated/"+prefix+"/tree/"+ document.getElementById("branch").value;
+			document.getElementById("github").text  = document.getElementById("branch").value;
+
+			document.getElementById("githubBranches").href = "https://github.com/Financial-Network-Incorporated/"+prefix+"/branches";
+			document.getElementById("githubBranches").text  = prefix + " branches";
+			
+			document.getElementById("confluenceVersions").href = "https://confluence.fni-stl.com/pages/viewpage.action?spaceKey="+prefixConfluence+"&title=Versions";
+			document.getElementById("confluenceVersions").text  = prefix + " Versions";
+
+
+			document.getElementById("jenkinsBuild").href = "http://fdevrh11:8080/view/"+prefixConfluence+"/";
+			document.getElementById("jenkinsBuild").text  = prefix + " Build";
+
+
+
+
+			var customer = serverData['customers'][prefix.toLowerCase()];
+			
+			var serverResults="<table width=\"95%\">";
+			serverResults += "<tr valign=top>"
+			
+			if (customer) {
+				if (customer['servers']) {
+					Object.entries(customer['servers']).forEach(([key, values]) => {
+						serverResults += "<td><div style=\"background-color:#CCC;text-align:center\">"+key+"</div><ul>";
+
+						if (customer['web']) {
+							var type = key;
+							if (type == 'prod') {
+								type='';
+							}
+							var url = 'https://'+type+prefix.toLowerCase()+'.fni-stl.com/fni-lenderportal-navigation/login';
+
+							var web = customer['web'][key]; // Override the default generation
+							if (web) {
+								url = web;
+							}
+
+							serverResults += "<a href=\""+url+"\">"+url+"</a><br><hr>";
+						}
+						
+						for(var v in values) {
+							serverResults += "<li>"+values[v]+"</li>";
+							
+							var descriptions = serverData['descriptions'][values[v]][key];
+							
+							if (descriptions) {
+								Object.entries(descriptions).forEach(([dKey, dValues]) => {
+									serverResults += "<ul>";
+
+									for(var v in dValues) {
+										if (dKey == 'GCP') {
+											serverResults += "<li>"+dKey + " - " + dValues[v]+"</li>";
+										}
+									}
+									
+									serverResults += "</ul>";
+								});
+							}
+							
+							
+						}
+						serverResults += "</ul></td>";
+					});
+				}
+			}
+			serverResults += "</tr>";
+			serverResults += "</table>";
+			
+			document.getElementById("serverInfo").innerHTML  = serverResults;
+			
+		}
+		
+
+		document.title = branch;
+	}
+	function trim(data) {
+		if (! data) {
+			data = "";
+		}
+		data = data.replaceAll(/^\s+|\s+$/g,"");
+		return data;
+	}
+</script>
+<head>
+<body>
+<form id="theForm">
+	<table>
+	<tr style="display:none"><!-- Not used at this time at FNI -->
+		<td>BranchType:</td>
+		<td>
+			<select name=type id=type>
+				<option value=""></option>
+				<option value="feature/">Feature</option>
+				<option value="bugfix/">Bug Fix</option>
+				<option value="spike/">Spike</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td>Initials:</td><td><input type=text name=initials id=initials></td>
+	</tr><tr>
+		<td>Ticket Number:</td><td><input type=text name=ticket id=ticket></td>
+	</tr><tr>
+		<td>Description:</td><td><input type=text name=desc id=desc size=40></td>
+	</tr><tr>
+		<td></td><td><input type=submit value="Generate"></td>
+	</tr><tr>
+		<td colspan=2><hr></td>
+	</tr><tr>
+		<td>Branch Name:</td><td><input type=text id=branch size=60></td>
+	</tr><tr>
+		<td>Commit Prefix:</td><td><input type=text id=commit size=60></td>
+	</tr><tr>
+		<td colspan=2><hr></td>
+	</tr><tr>
+		<td>Jira</td><td><a id=jira href="" target=_blank></a></td>
+	</tr><tr>
+		<td>Github</td><td>
+			<a id=github href=""  target=_blank></a><br>
+			<a id=githubBranches href=""  target=_blank></a><br>
+		</td>
+	</tr><tr>
+		<td>Confluence</td><td><a id=confluenceVersions href=""  target=_blank></a></td>
+	</tr><tr>
+		<td>Jenkins</td><td><a id=jenkinsBuild href=""  target=_blank></a></td>
+	</tr>
+	</table>
+</form>
+
+<div>
+<hr>
+Server Info<br>
+<div style="margin-left:3em;" id="serverInfo">
+</div>
+</div>
+<hr>
+<div style="display:none">
+	Bookmarklet : <a href="javascript:window.location.href='file:///D:/Users/mballiet/Desktop/branchName.html?initials=MB&fromTitle=' + encodeURIComponent(document.title) + '&fromURL='+encodeURIComponent(window.location.href);">Quick Branch</a>
+</div>
+
+<script>
+	generateNames();
+</script>
+</body>

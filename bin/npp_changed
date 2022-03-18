@@ -1,0 +1,14 @@
+#!/bin/bash
+
+while IFS="" read -r dfile || [ -n "$p" ] ; do
+   echo Loading $dfile
+	~/bin/npp $dfile
+
+
+   if [[ $dfile =~ \.dat ]] ; then
+		ctl=${dfile/.dat/.ctl}
+		echo CTL : $ctl
+	~/bin/npp $ctl
+   fi
+
+done <<< $(git diff --name-only HEAD master)

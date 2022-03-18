@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo find . -type f -exec grep -H $1 {} \;
+find . -type f -exec grep -H $1 {} \;

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+curPath=`pwd`
+
+echo $curPath
+
+testPath=`echo $curPath | sed -e 's/home\/mballiet\/projects\///'`
+
+echo $testPath
+
+if [ '$1' = '' ] ; then
+	ls $testPath
+fi
