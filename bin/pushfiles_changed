@@ -1,0 +1,55 @@
+#!/bin/bash
+
+OCD=`pwd`
+
+echo Your Current directory
+echo .	$OCD
+
+pat='/projects/([^/]+)'
+[[ $OCD =~ $pat ]] ## Regex match
+
+proj=${BASH_REMATCH[1]}
+server=unknown
+
+echo Project detected by path
+echo .	$proj
+
+
+. /home/mballiet_fni_stl_com/projects/$proj/BackEnd/compile_config
+
+if [[ "$proj" == "sfn" ]]; then
+	server=tkodev61
+
+fi
+
+echo Server name for pooject $proj : 
+echo .	$server
+echo
+
+
+if [[ "$server" == "unknown" ]]; then
+	echo Stopping because server is : $server
+	exit
+fi
+
+echo Begining pushfiles from folder : $proj
+echo
+echo
+
+cd /home/mballiet_fni_stl_com/projects/$proj
+
+while IFS="" read -r dfile || [ -n "$p" ] ; do
+   echo Loading $dfile
+
+   pf="/usr3/local/bin/pushfiles.pl -p $proj $server $dfile"
+   echo Pushfiles : $pf
+   $pf
+
+done <<< $(git diff --name-only HEAD master)
+
+echo
+echo
+echo
+echo Completed pushfiles
+
+cd $OCD
