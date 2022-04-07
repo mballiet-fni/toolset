@@ -1,0 +1,6 @@
+#!/bin/sh
+
+
+SSH=$1
+SSH="${SSH#ssh://}"
+/usr/bin/SecureCRT /SSH2 /L mballiet_fni_stl_com $SSH
