@@ -157,8 +157,28 @@
 						'qa' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
 						'prod' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
 					},
-					'web' : {
+					'confluence' : {
+						'space' : 'PTHTCI'
 					},
+					'jenkins' : {
+						'path' : 'TCI',
+					}
+				},
+				'aly' : { 
+					'servers' : {
+						'dev' : ['TK01'], 
+						'qa' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
+						'prod' : ['TKO1 backend','TKO1 web frontend','TKO1 priv frontend'],
+					},
+					'web' : {
+						'dev' : 'https://devtci.fni-stl.com/cgi-bin/lender_fni_login.pl',
+					},
+					'confluence' : {
+						'space' : 'PTHTCI'
+					},
+					'jenkins' : {
+						'path' : 'TCI',
+					}
 				},
 				'twc' : { 
 					'inactive' : true,
@@ -251,7 +271,6 @@
 						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
 					},
 					'web' : {
-						'dev' : 'https://devgaf.fni-stl.com/fni-lenderportal-navigation/login',
 					},
 				},
 				'koa' : { 
@@ -294,6 +313,9 @@
 					},
 					'web' : {
 					},
+					'confluence' : {
+						'space' : 'SWLT',
+					}
 				},
 				'tow' : { 
 					'servers' : {
@@ -342,7 +364,6 @@
 						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
 					},
 					'web' : {
-						'dev' : 'https://devlkt.fni-stl.com/fni-lenderportal-navigation/login',
 					},
 				},
 				'rea' : {
@@ -373,7 +394,6 @@
 						'prod' : ['TKO2 backend','TKO2 web frontend','TKO2 priv frontend'],	
 					},
 					'web' : {
-						'tst' : 'https://tstcav.fni-stl.com/fni-lenderportal-navigation/login',
 					}
 				},
 				'omf' : {
@@ -384,8 +404,10 @@
 						'prod' : ['TKO3 backend','TKO3 web frontend','TKO3 priv frontend'],
 					},
 					'web' : {
-						'dev' : 'https://devomf.fni-stl.com/cgi-bin/lender_fni_login.pl',
 					},
+					'confluence' : {
+						'space' : 'OMFTemp',
+					}
 				},
 			}	
 		};
@@ -406,7 +428,7 @@
 		branch+="_"+trim(urlParams.get("desc"));
 		
 		branch = branch.replaceAll(/\s/g,"_");
-		branch = branch.replaceAll(/[',\\\/]/g,"");
+		branch = branch.replaceAll(/[',\\\/:&]/g,"");
 
 		commit+=urlParams.get("ticket");
 		commit+=" "+initials;
@@ -420,11 +442,17 @@
 
 		if (urlParams.get("ticket")) {
 			var prefix = urlParams.get("ticket").match(/^([^-]+)/)[0];
-			var prefixConfluence = prefix;
+			var customer = serverData['customers'][prefix.toLowerCase()];
 			
-			//Some of these things are not like the others, fix that!
-			if (prefix == "OMF") { prefixConfluence = "OMFTemp"; }
-			if (prefix == "SWL") { prefixConfluence = "SWLT"; }
+			var spaceConfluence = prefix;
+			if ('confluence' in customer && 'space' in  customer['confluence']) {
+				spaceConfluence = customer['confluence']['space'];
+			}
+			var jenkinsPath = prefix;
+			if ('jenkins' in customer && 'path' in  customer['jenkins']) {
+				jenkinsPath = customer['jenkins']['path'];
+			}
+			
 
 			document.getElementById("github").href = "https://github.com/Financial-Network-Incorporated/"+prefix+"/tree/"+ document.getElementById("branch").value;
 			document.getElementById("github").text  = document.getElementById("branch").value;
@@ -432,18 +460,20 @@
 			document.getElementById("githubBranches").href = "https://github.com/Financial-Network-Incorporated/"+prefix+"/branches";
 			document.getElementById("githubBranches").text  = prefix + " branches";
 			
-			document.getElementById("confluenceVersions").href = "https://confluence.fni-stl.com/pages/viewpage.action?spaceKey="+prefixConfluence+"&title=Versions";
-			document.getElementById("confluenceVersions").text  = prefix + " Versions";
-
-
-			document.getElementById("jenkinsBuild").href = "http://fdevrh11:8080/view/"+prefixConfluence+"/";
-			document.getElementById("jenkinsBuild").text  = prefix + " Build";
-
-
-
-
-			var customer = serverData['customers'][prefix.toLowerCase()];
+			document.getElementById("confluenceVersions").href = "https://confluence.fni-stl.com/pages/viewpage.action?spaceKey="+spaceConfluence+"&title=Versions";
+			document.getElementById("confluenceVersions").text  = spaceConfluence + " Versions";
 			
+			document.getElementById("confluenceInterfaces").href = "https://confluence.fni-stl.com/pages/viewpage.action?spaceKey="+spaceConfluence+"&title=Interface+Links";
+			document.getElementById("confluenceInterfaces").text  = spaceConfluence + " Interface Links";
+
+			document.getElementById("confluenceSpace").textContent  = spaceConfluence;
+
+			document.getElementById("jenkinsPath").textContent  = jenkinsPath;
+
+			document.getElementById("jenkinsBuild").href = "http://fdevrh51.fnicloud.com:8080/view/"+jenkinsPath+"/";
+			document.getElementById("jenkinsBuild").text  = jenkinsPath + " Build";
+
+
 			var serverResults="<table width=\"95%\">";
 			serverResults += "<tr valign=top>"
 			
@@ -548,9 +578,15 @@
 			<a id=githubBranches href=""  target=_blank></a><br>
 		</td>
 	</tr><tr>
-		<td>Confluence</td><td><a id=confluenceVersions href=""  target=_blank></a></td>
+		<td>Confluence</td><td><span id=confluenceSpace></span></td>
 	</tr><tr>
-		<td>Jenkins</td><td><a id=jenkinsBuild href=""  target=_blank></a></td>
+		<td></td><td><a id=confluenceVersions href=""  target=_blank></a></td>
+	</tr><tr>
+		<td></td><td><a id=confluenceInterfaces href=""  target=_blank></a></td>
+	</tr><tr>
+		<td>Jenkins</td><td><span id=jenkinsPath></span></td>
+	</tr><tr>
+		<td></td><td><a id=jenkinsBuild href=""  target=_blank></a></td>
 	</tr>
 	</table>
 </form>
