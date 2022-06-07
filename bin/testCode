@@ -16,8 +16,16 @@ if [ "$testName" = "" ] ; then
 	if [ ! -e $testPath ] ; then
 		mkdir $testPath
 	fi
-        ls -lF $testPath
-else
-	$testPath/$testName
+        ls -lF $testPath/*.test
 fi
 
+echo =============================
+
+
+for f in $testPath/*.test; do
+	cd $lanchPath
+	echo Running $f
+	$f
+done
+
+cd $curPath
