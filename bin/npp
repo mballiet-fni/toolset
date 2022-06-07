@@ -1,2 +1,6 @@
 #!/bin/sh
-start "" "C:\Program Files (x86)\Notepad++\notepad++.exe" $*
+
+#start "" "C:\Program Files (x86)\Notepad++\notepad++.exe" $*
+
+#/var/lib/snapd/desktop/applications/notepad-plus-plus_notepad-plus-plus.desktop 
+/snap/bin/notepad-plus-plus $*
