@@ -2,11 +2,11 @@
 
 curPath=`pwd`
 
-#echo $curPath
+projectsPath=`echo $curPath | sed -r 's/(^.*?\/projects\/).*/\\1/'`
+testPath=$projectsPath/`echo $curPath | sed -r 's/(^.*?)\/projects\/([^\/]*).*/tests\/\\2/'`
+launchPath=$projectsPath`echo $curPath | sed -r 's/^\*?\/projects\/([^\/]*).*/\\1/'`
 
-testPath=`echo $curPath | sed -r 's/(^\/home\/mballiet_fni_stl_com\/)projects\/([^\/]*).*/\\1tests\/\\2/'`
-launchPath=`echo $curPath | sed -r 's/(^\/home\/mballiet_fni_stl_com\/projects\/[^\/]*).*/\1/'`
-
+echo 'Tests loded from : '$projectsPath
 echo 'Tests loded from : '$testPath
 echo 'Start in         : '$launchPath
 

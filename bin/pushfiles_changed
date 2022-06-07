@@ -17,6 +17,10 @@ echo .	$proj
 
 . /home/mballiet_fni_stl_com/projects/$proj/BackEnd/compile_config
 
+if [[ "$proj" == "SLM-Atlas" ]]; then
+	server=slmdev51
+
+fi
 if [[ "$proj" == "sfn" ]]; then
 	server=tkodev61
 
