@@ -1,6 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 
-git add .
-git commit
+commit=`cat ~/bin/.commit_message`
+
+read -e -p "Commit Message : " -i "$commit" commit
+
+echo $commit > ~/bin/.commit_message
+
+git add . && \
+git commit -m "$commit" && \
 git push

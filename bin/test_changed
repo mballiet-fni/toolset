@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while IFS="" read -r dfile || [ -n "$p" ] ; do
+   echo Loading $dfile
+	perl -cw $dfile
+
+
+done <<< $(git diff --name-only HEAD master)
