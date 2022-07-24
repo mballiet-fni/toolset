@@ -57,11 +57,13 @@
 			
 			var spaceConfluence = prefix.toUpperCase();
 			if ('confluence' in customer && 'space' in  customer['confluence']) {
-				spaceConfluence = customer['confluence']['space'];
+				var sc = customer['confluence']['space'];
+				if (sc !=null) {spaceConfluence = sc;}
 			}
 			var jenkinsPath = prefix;
 			if ('jenkins' in customer && 'path' in  customer['jenkins']) {
-				jenkinsPath = customer['jenkins']['path'];
+				var jp  = customer['jenkins']['path'];
+				if (jp !=null) {jenkinsPath = jp;}
 			}
 			
 
@@ -88,7 +90,7 @@
 			var serverResults="<table width=\"95%\">";
 			serverResults += "<tr valign=top>"
 			
-			var domain = ['dev','qa','lnch','prod'];
+			var domain = ['dev','qa','tst','lnch','prod'];
 			for(var sidx in domain) {
 				var d = domain[sidx];
 
@@ -96,18 +98,21 @@
 
 				var web = customer[d]['web']; // Override the default generation
 				var webStyle = "background-color:#FFC;";
+				var webHost;
 				if (web) {
-					url=web;
+					webHost=web;
 				var webStyle = "background-color:#FFF;";
 				}else{
 					var type = d;
 					if (type == 'prod') {
 						type='';
 					}
-					url = 'https://'+type+prefix.toLowerCase()+'.fni-stl.com/fni-lenderportal-navigation/login';
+					webHost = type+prefix.toLowerCase()+'.fni-stl.com';
 				}
 
-				serverResults += "<a style=\""+webStyle+"\"href=\""+url+"\">"+url+"</a><br><hr>";
+				serverResults += "<a style=\""+webStyle+"\"href=\"https://"+webHost+"/cgi-bin/lender_fni_login.pl\">Workbench</a><br>";
+				serverResults += "<a style=\""+webStyle+"\"href=\"https://"+webHost+"/fni-lenderportal-navigation/login\">Other</a><br>";
+				serverResults += "<hr>";
 				
 				for(var vidx in customer[d]['servers']) {
 					var v = customer[d]['servers'][vidx]; 

@@ -1,4 +1,4 @@
-var serverData = {
+  var serverData = {
 	"csb": {
 		"dev": {
 			"servers": [
@@ -19,6 +19,10 @@ var serverData = {
 				"tkodev51.fnicloud.com",
 				"tkodev51.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -59,6 +63,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [],
 			"web": null
@@ -97,6 +105,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [],
 			"web": null
@@ -118,7 +130,7 @@ var serverData = {
 			"servers": [
 				"tkodev51.fnicloud.com"
 			],
-			"web": "https://devtci.fni-stl.com/cgi-bin/lender_fni_login.pl"
+			"web": "devtci.fni-stl.com"
 		},
 		"confluence": {
 			"space": "PTHTCI"
@@ -133,6 +145,10 @@ var serverData = {
 				"tkodev51.fnicloud.com",
 				"tkodev51.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -173,6 +189,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [],
 			"web": null
@@ -194,7 +214,7 @@ var serverData = {
 			"servers": [
 				"tkodev61.fnicloud.com"
 			],
-			"web": "https://devnav.fni-stl.com/cgi-bin/lender_fni_login.pl"
+			"web": "devnav.fni-stl.com"
 		},
 		"confluence": {
 			"space": null
@@ -210,6 +230,10 @@ var serverData = {
 				"tkopq61.fnicloud.com",
 				"tkopq62.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -237,7 +261,7 @@ var serverData = {
 			"servers": [
 				"tkodev61.fnicloud.com"
 			],
-			"web": "https://devsfn.fni-stl.com/cgi-bin/lender_fni_login.pl"
+			"web": "devsfn.fni-stl.com"
 		},
 		"confluence": {
 			"space": null
@@ -253,6 +277,10 @@ var serverData = {
 				"tkopq61.fnicloud.com",
 				"tkopq62.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -298,6 +326,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [
 				"tkolnch61.fnicloud.com",
@@ -341,6 +373,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [
 				"tkolnch61.fnicloud.com",
@@ -382,6 +418,10 @@ var serverData = {
 				"tkopq61.fnicloud.com",
 				"tkopq62.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -428,6 +468,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [
 				"tkolnch71.fnicloud.co",
@@ -470,6 +514,10 @@ var serverData = {
 				"tkopt71.fnicloud.com",
 				"tkopt72.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -516,6 +564,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [
 				"tkolnch71.fnicloud.co",
@@ -558,6 +610,10 @@ var serverData = {
 				"tkopt71.fnicloud.com",
 				"tkopt72.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -604,6 +660,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [
 				"tkolnch71.fnicloud.co",
@@ -646,6 +706,10 @@ var serverData = {
 				"tkopt71.fnicloud.com",
 				"tkopt72.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -692,6 +756,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [
 				"tkolnch71.fnicloud.co",
@@ -734,6 +802,10 @@ var serverData = {
 				"tkopt71.fnicloud.com",
 				"tkopt72.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -780,6 +852,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [
 				"tkolnch71.fnicloud.co",
@@ -805,7 +881,7 @@ var serverData = {
 			"servers": [
 				"slmdev51.fnicloud.com"
 			],
-			"web": "https://devatlas.slm.fni-stl.com/cgi-bin/lender_fni_login.pl"
+			"web": "devatlas.slm.fni-stl.com"
 		},
 		"confluence": {
 			"space": "SLMATLAS"
@@ -818,7 +894,11 @@ var serverData = {
 				"slmqa51.fnicloud.com",
 				"slmqa52.fnicloud.com"
 			],
-			"web": "https://qaatlas.slm.fni-stl.com/cgi-bin/lender_fni_login.pl"
+			"web": "qaatlas.slm.fni-stl.com"
+		},
+		"tst": {
+			"servers": [],
+			"web": null
 		},
 		"lnch": {
 			"servers": [],
@@ -829,7 +909,7 @@ var serverData = {
 				"slmprd51.fnicloud.com",
 				"slmprd52.fnicloud.com"
 			],
-			"web": "https://atlasslm.fni-stl.com/cgi-bin/lender_fni_login.pl"
+			"web": "atlasslm.fni-stl.com"
 		}
 	},
 	"lkt": {
@@ -854,6 +934,10 @@ var serverData = {
 				"tkopt71.fnicloud.com",
 				"tkopt72.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -900,6 +984,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [
 				"tkolnch71.fnicloud.co",
@@ -942,6 +1030,10 @@ var serverData = {
 				"tkopt71.fnicloud.com",
 				"tkopt72.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -987,6 +1079,10 @@ var serverData = {
 			],
 			"web": null
 		},
+		"tst": {
+			"servers": [],
+			"web": null
+		},
 		"lnch": {
 			"servers": [
 				"tkolnch61.fnicloud.com",
@@ -1029,6 +1125,10 @@ var serverData = {
 				"tkopt71.fnicloud.com",
 				"tkopt72.fnicloud.com"
 			],
+			"web": null
+		},
+		"tst": {
+			"servers": [],
 			"web": null
 		},
 		"lnch": {
@@ -1340,7 +1440,7 @@ var oldServerData ={
 				]
 			},
 			"web": {
-				"dev": "https://devtci.fni-stl.com/cgi-bin/lender_fni_login.pl"
+				"dev": "devtci.fni-stl.com"
 			},
 			"confluence": {
 				"space": "PTHTCI"
@@ -1390,7 +1490,7 @@ var oldServerData ={
 				]
 			},
 			"web": {
-				"dev": "https://devnav.fni-stl.com/cgi-bin/lender_fni_login.pl"
+				"dev": "devnav.fni-stl.com"
 			}
 		},
 		"sfn": {
@@ -1415,8 +1515,8 @@ var oldServerData ={
 				]
 			},
 			"web": {
-				"dev": "https://devsfn.fni-stl.com/cgi-bin/lender_fni_login.pl",
-				"prod?": "https://sfn.fni-stl.com/cgi-bin/lender_fni_login.pl"
+				"dev": "devsfn.fni-stl.com",
+				"prod?": "sfn.fni-stl.com"
 			}
 		},
 		"tif": {
@@ -1713,9 +1813,9 @@ var oldServerData ={
 				]
 			},
 			"web": {
-				"dev": "https://devatlas.slm.fni-stl.com/cgi-bin/lender_fni_login.pl",
-				"qa": "https://qaatlas.slm.fni-stl.com/cgi-bin/lender_fni_login.pl",
-				"prod": "https://atlasslm.fni-stl.com/cgi-bin/lender_fni_login.pl"
+				"dev": "devatlas.slm.fni-stl.com",
+				"qa": "qaatlas.slm.fni-stl.com",
+				"prod": "atlasslm.fni-stl.com"
 			},
 			"confluence": {
 				"space": "SLMATLAS"
@@ -1849,7 +1949,7 @@ function cleanupData() {
 		console.log(v);
 			newData[v]={};
 		
-		var domain = ['dev','qa','lnch','prod'];
+		var domain = ['dev','qa','tst','lnch','prod'];
 		for(var sidx in domain) {
 			var s= domain[sidx];
 			console.log("\t"+s);
